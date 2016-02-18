@@ -1,0 +1,62 @@
+#See http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+#EMBEDDED SERVER CONFIGURATION  
+server:
+  port: 8080
+  display-name: v1
+  tomcat:
+    accesslog:
+      directory: logs
+      enabled: false
+      pattern: common
+      prefix: access_log
+      suffix: .log
+    background-processor-delay: 30
+    max-http-header-size: 0
+    max-threads: 0
+    port-header: X-Forwarded-Port
+    protocol-header: X-Forwarded-Proto
+    uri-encoding: UTF-8
+      
+
+
+#SPRING PROFILES  
+spring:
+  datasource:
+    name: ucanhd
+    url: jdbc:mysql://www.ucanhd.com:3306/ucanhd
+    username: ucanhd
+    password: ucanhd
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat,log4j
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+
+    
+logging:
+  config: classpath:config/logback.xml
+  file: log/stdout.out
+  path: logs/
+  level:
+    org.springframework.web: DEBUG
+    log4j.logger.druid.sql: warn,stdout
+    log4j.logger.druid.sql.DataSource: warn,stdout
+    log4j.logger.druid.sql.Connection: warn,stdout
+    log4j.logger.druid.sql.Statement: warn,stdout
+    log4j.logger.druid.sql.ResultSet: warn,stdout

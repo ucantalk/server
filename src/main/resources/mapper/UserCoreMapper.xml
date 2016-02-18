@@ -1,0 +1,46 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ucan.server.mapper.UserInfoMapper">
+	<!-- Get UserSecret -->
+	<resultMap type="com.ucan.server.model.UserCore" id="userCore">
+		<id property="uid" column="uid" />
+		<result property="account" column="account" />
+		<result property="password" column="password" />
+		<result property="date" column="date" />
+		<result property="token" column="token" />
+		<result property="key" column="key" />
+		<result property="role" column="role" />
+	</resultMap>
+	<select id="selectAsCustom" parameterType="com.ucan.server.model.UserCore"
+		resultMap="userCore">
+		select uid,account,date,null as password,token ,null as
+		key,role
+		from
+		user_core
+		<where>
+			<if test="{uid} !=null and uid!=''">
+				and uid=#{uid}
+			</if>
+			<if test="{account}!=null and account!=''">
+				and account=#{account}
+			</if>
+			<if test="{password} !=null and passrod!=''">
+				and password=#{password}
+			</if>
+			<if test="{date} !=null and date !=''">
+				and date = #{date}
+			</if>
+			<if test="{token} !=null and token !=''">
+				and token = #{token}
+			</if>
+			<if test="{key} !=null and key !=''">
+				and key = #{key}
+			</if>
+			<if test="{role} !=null and role !=''">
+				and role = #{role}
+			</if>
+		</where>
+	</select>
+
+
+
+</mapper>

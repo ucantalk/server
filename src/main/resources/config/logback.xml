@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<logger name="jdbc" level="OFF" />
+	<logger name="jdbc.sqltiming" level="DEBUG" />
+	<logger name="jdbc.resultsettable" level="DEBUG" />
+	<logger name="log4j.logger.druid.sql" level="warn,stdout" />
+	<logger name="log4j.logger.druid.sql.DataSource" level="warn,stdout" />
+	<logger name="log4j.logger.druid.sql.Connection" level="warn,stdout" />
+	<logger name="log4j.logger.druid.sql.Statement" level="warn,stdout" />
+	<logger name="log4j.logger.druid.sql.ResultSet" level="warn,stdout" />
+</configuration>
